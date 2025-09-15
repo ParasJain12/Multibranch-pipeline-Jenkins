@@ -8,5 +8,12 @@ pipeline {
                 echo 'Hello, Jenkins!'
             }
         }
+        stage('Use Common Library') {
+            steps {
+                script {
+                    common.printMessage('Hello from shared library')
+                }
+            }
+        }
     }
 }
