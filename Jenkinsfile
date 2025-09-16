@@ -1,6 +1,19 @@
 @Library('my-shared-library') _
 pipeline {
     agent any
+
+    options {
+        timestamps()
+        buildDiscarder(logRotator(daysToKeepStr: '7', numToKeepStr: '10'))
+    }
+
+    post {
+        always {
+            cleanWs()
+            echo "Workspace cleaned"
+        }
+    }
+    
     stages {
         //main branch
         //Hello
