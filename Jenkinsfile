@@ -16,5 +16,17 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                script {
+                    echo "Building branch ${env.BRANCH_NAME}"
+                    if (env.BRANCH_NAME == 'main') {
+                        echo "This is production"
+                    } else {
+                        echo "This is a feature branch"
+                    }
+                }
+            }
+        }
     }
 }
